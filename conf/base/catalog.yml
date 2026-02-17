@@ -1,0 +1,36 @@
+# Here you can define all your datasets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+# All intermediate results are passed in memory as dictionaries
+# Final outputs are saved within the nodes themselves
+
+# For starting from post-cropped images (not raw image)
+cropped_parcel_image_from_disk:
+  type: pickle.PickleDataset
+  filepath: data/02_intermediate/cropped_parcel_images.pkl
+
+cropped_parcel_image:
+  type: MemoryDataset
+
+rotated_image:
+  type: MemoryDataset
+
+rotated_preprocessed_image:
+  type: MemoryDataset
+
+postcode_box_prep_image:
+  type: MemoryDataset
+
+receiver_box_prep_image:
+  type: MemoryDataset
+
+postcode_region_predicted:
+  type: MemoryDataset
+
+read_address_txt:
+  type: MemoryDataset
+
+predicted_region_by_address:
+  type: MemoryDataset

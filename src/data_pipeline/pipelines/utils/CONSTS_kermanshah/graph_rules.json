@@ -1,0 +1,919 @@
+{
+    "metadata": {
+        "purity_threshold": 0.9,
+        "min_support": 3,
+        "max_depth": null,
+        "global_region_prior": 0
+    },
+    "rules": [
+        {
+            "tokens": [
+                "نیروی",
+                "دریایی"
+            ],
+            "region": 418,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "418": 4
+            }
+        },
+        {
+            "tokens": [
+                "حمیدیان"
+            ],
+            "region": 414,
+            "support": 14,
+            "purity": 1.0,
+            "histogram": {
+                "414": 14
+            }
+        },
+        {
+            "tokens": [
+                "فلسطین"
+            ],
+            "region": 418,
+            "support": 9,
+            "purity": 1.0,
+            "histogram": {
+                "418": 9
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_پاساژ"
+            ],
+            "region": 413,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "413": 3
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_دیلمان"
+            ],
+            "region": 416,
+            "support": 7,
+            "purity": 1.0,
+            "histogram": {
+                "416": 7
+            }
+        },
+        {
+            "tokens": [
+                "پشت",
+                "ترمینال"
+            ],
+            "region": 418,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "418": 4
+            }
+        },
+        {
+            "tokens": [
+                "دشت",
+                "کلسار"
+            ],
+            "region": 416,
+            "support": 6,
+            "purity": 1.0,
+            "histogram": {
+                "416": 6
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_قلیپور"
+            ],
+            "region": 415,
+            "support": 10,
+            "purity": 1.0,
+            "histogram": {
+                "415": 10
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_مدرس"
+            ],
+            "region": 418,
+            "support": 6,
+            "purity": 1.0,
+            "histogram": {
+                "418": 6
+            }
+        },
+        {
+            "tokens": [
+                "لولمان"
+            ],
+            "region": 434,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "434": 5
+            }
+        },
+        {
+            "tokens": [
+                "صنعتی",
+                "بلوار_صنعت"
+            ],
+            "region": 433,
+            "support": 6,
+            "purity": 1.0,
+            "histogram": {
+                "433": 6
+            }
+        },
+        {
+            "tokens": [
+                "کلسار"
+            ],
+            "region": 416,
+            "support": 67,
+            "purity": 0.9253731343283582,
+            "histogram": {
+                "416": 62,
+                "418": 2,
+                "413": 1,
+                "417": 2
+            }
+        },
+        {
+            "tokens": [
+                "میدان_جهاد"
+            ],
+            "region": 415,
+            "support": 6,
+            "purity": 1.0,
+            "histogram": {
+                "415": 6
+            }
+        },
+        {
+            "tokens": [
+                "کوی",
+                "بیانی"
+            ],
+            "region": 419,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "419": 3
+            }
+        },
+        {
+            "tokens": [
+                "کوی",
+                "مرادیان"
+            ],
+            "region": 415,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "415": 3
+            }
+        },
+        {
+            "tokens": [
+                "کوی",
+                "اهکی"
+            ],
+            "region": 418,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "418": 3
+            }
+        },
+        {
+            "tokens": [
+                "قلیپور"
+            ],
+            "region": 415,
+            "support": 6,
+            "purity": 1.0,
+            "histogram": {
+                "415": 6
+            }
+        },
+        {
+            "tokens": [
+                "صفاری"
+            ],
+            "region": 415,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "415": 5
+            }
+        },
+        {
+            "tokens": [
+                "رشتیان"
+            ],
+            "region": 415,
+            "support": 13,
+            "purity": 1.0,
+            "histogram": {
+                "415": 13
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_کیلان"
+            ],
+            "region": 416,
+            "support": 13,
+            "purity": 1.0,
+            "histogram": {
+                "416": 13
+            }
+        },
+        {
+            "tokens": [
+                "مسکن"
+            ],
+            "region": 419,
+            "support": 30,
+            "purity": 0.9333333333333333,
+            "histogram": {
+                "419": 28,
+                "438": 1,
+                "415": 1
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_امام",
+                "خمینی",
+                "کوچه_پاستور"
+            ],
+            "region": 418,
+            "support": 49,
+            "purity": 1.0,
+            "histogram": {
+                "418": 49
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_امام",
+                "خمینی",
+                "کوچه_بن"
+            ],
+            "region": 418,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "418": 4
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_امام",
+                "خمینی",
+                "میدان_فرهنک"
+            ],
+            "region": 418,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "418": 3
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_امام",
+                "خمینی",
+                "میدان"
+            ],
+            "region": 413,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "413": 5
+            }
+        },
+        {
+            "tokens": [
+                "لاهیجان"
+            ],
+            "region": 441,
+            "support": 36,
+            "purity": 0.9722222222222222,
+            "histogram": {
+                "441": 35,
+                "443": 1
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_مسکن"
+            ],
+            "region": 419,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "419": 5
+            }
+        },
+        {
+            "tokens": [
+                "رخشت",
+                "بخش_مرکزی"
+            ],
+            "region": 415,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "415": 3
+            }
+        },
+        {
+            "tokens": [
+                "سعدی",
+                "خیابان_سعدی"
+            ],
+            "region": 415,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "415": 4
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_معلم"
+            ],
+            "region": 415,
+            "support": 72,
+            "purity": 0.9861111111111112,
+            "histogram": {
+                "415": 71,
+                "434": 1
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_افخر"
+            ],
+            "region": 413,
+            "support": 9,
+            "purity": 1.0,
+            "histogram": {
+                "413": 9
+            }
+        },
+        {
+            "tokens": [
+                "معلوین"
+            ],
+            "region": 414,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "414": 4
+            }
+        },
+        {
+            "tokens": [
+                "استقامت"
+            ],
+            "region": 414,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "414": 4
+            }
+        },
+        {
+            "tokens": [
+                "دیانی"
+            ],
+            "region": 417,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "417": 5
+            }
+        },
+        {
+            "tokens": [
+                "پستک"
+            ],
+            "region": 416,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "416": 3
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_چهران"
+            ],
+            "region": 418,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "418": 4
+            }
+        },
+        {
+            "tokens": [
+                "منیریه"
+            ],
+            "region": 419,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "419": 5
+            }
+        },
+        {
+            "tokens": [
+                "باهنر"
+            ],
+            "region": 419,
+            "support": 7,
+            "purity": 1.0,
+            "histogram": {
+                "419": 7
+            }
+        },
+        {
+            "tokens": [
+                "طوالش",
+                "شهر"
+            ],
+            "region": 437,
+            "support": 7,
+            "purity": 1.0,
+            "histogram": {
+                "437": 7
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_دروازه"
+            ],
+            "region": 414,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "414": 4
+            }
+        },
+        {
+            "tokens": [
+                "شانکو"
+            ],
+            "region": 417,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "417": 3
+            }
+        },
+        {
+            "tokens": [
+                "رودبارتان"
+            ],
+            "region": 418,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "418": 3
+            }
+        },
+        {
+            "tokens": [
+                "ماسال"
+            ],
+            "region": 438,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "438": 3
+            }
+        },
+        {
+            "tokens": [
+                "بندرانزلی"
+            ],
+            "region": 431,
+            "support": 16,
+            "purity": 1.0,
+            "histogram": {
+                "431": 16
+            }
+        },
+        {
+            "tokens": [
+                "چماران"
+            ],
+            "region": 419,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "419": 5
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_لاهیجان"
+            ],
+            "region": 417,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "417": 3
+            }
+        },
+        {
+            "tokens": [
+                "ماهی"
+            ],
+            "region": 417,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "417": 3
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_کلسار"
+            ],
+            "region": 416,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "416": 4
+            }
+        },
+        {
+            "tokens": [
+                "میدان_امام",
+                "حسین"
+            ],
+            "region": 418,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "418": 3
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_مطهری",
+                "خیابان_ساغر"
+            ],
+            "region": 418,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "418": 3
+            }
+        },
+        {
+            "tokens": [
+                "شهرک_فرهنکیان"
+            ],
+            "region": 415,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "415": 3
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_رسالت"
+            ],
+            "region": 418,
+            "support": 9,
+            "purity": 1.0,
+            "histogram": {
+                "418": 9
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_فلسطین"
+            ],
+            "region": 418,
+            "support": 8,
+            "purity": 1.0,
+            "histogram": {
+                "418": 8
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_انصاری",
+                "جنب"
+            ],
+            "region": 416,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "416": 3
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_باهنر"
+            ],
+            "region": 419,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "419": 4
+            }
+        },
+        {
+            "tokens": [
+                "میدان_قلیپور"
+            ],
+            "region": 415,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "415": 5
+            }
+        },
+        {
+            "tokens": [
+                "دیلمان"
+            ],
+            "region": 416,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "416": 4
+            }
+        },
+        {
+            "tokens": [
+                "فلکه_رازی"
+            ],
+            "region": 414,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "414": 4
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_چمران"
+            ],
+            "region": 418,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "418": 3
+            }
+        },
+        {
+            "tokens": [
+                "نیکمرام"
+            ],
+            "region": 415,
+            "support": 6,
+            "purity": 1.0,
+            "histogram": {
+                "415": 6
+            }
+        },
+        {
+            "tokens": [
+                "شهرک_بهشتی"
+            ],
+            "region": 416,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "416": 4
+            }
+        },
+        {
+            "tokens": [
+                "هلالاحمر"
+            ],
+            "region": 417,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "417": 4
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_پرستار"
+            ],
+            "region": 419,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "419": 4
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_رودباری"
+            ],
+            "region": 414,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "414": 5
+            }
+        },
+        {
+            "tokens": [
+                "معلم"
+            ],
+            "region": 415,
+            "support": 8,
+            "purity": 1.0,
+            "histogram": {
+                "415": 8
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_منظریه"
+            ],
+            "region": 419,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "419": 3
+            }
+        },
+        {
+            "tokens": [
+                "بندر"
+            ],
+            "region": 431,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "431": 5
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_رسالت"
+            ],
+            "region": 418,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "418": 3
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_فلکه_رازی"
+            ],
+            "region": 414,
+            "support": 5,
+            "purity": 1.0,
+            "histogram": {
+                "414": 5
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_شهدای"
+            ],
+            "region": 415,
+            "support": 9,
+            "purity": 1.0,
+            "histogram": {
+                "415": 9
+            }
+        },
+        {
+            "tokens": [
+                "کلسان"
+            ],
+            "region": 416,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "416": 3
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_انقلاب"
+            ],
+            "region": 413,
+            "support": 9,
+            "purity": 1.0,
+            "histogram": {
+                "413": 9
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_خرمشهر"
+            ],
+            "region": 417,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "417": 3
+            }
+        },
+        {
+            "tokens": [
+                "سلیماند"
+            ],
+            "region": 414,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "414": 3
+            }
+        },
+        {
+            "tokens": [
+                "بلوار_نماز"
+            ],
+            "region": 416,
+            "support": 4,
+            "purity": 1.0,
+            "histogram": {
+                "416": 4
+            }
+        },
+        {
+            "tokens": [
+                "خیابان_کیل"
+            ],
+            "region": 433,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "433": 3
+            }
+        },
+        {
+            "tokens": [
+                "چهارراه_میکاییل"
+            ],
+            "region": 413,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "413": 3
+            }
+        },
+        {
+            "tokens": [
+                "شهرک_قدس"
+            ],
+            "region": 419,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "419": 3
+            }
+        },
+        {
+            "tokens": [
+                "پیربازار"
+            ],
+            "region": 290,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "290": 3
+            }
+        },
+        {
+            "tokens": [
+                "پیر",
+                "بازار"
+            ],
+            "region": 290,
+            "support": 3,
+            "purity": 1.0,
+            "histogram": {
+                "290": 3
+            }
+        }
+    ]
+}

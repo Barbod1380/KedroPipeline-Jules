@@ -1,0 +1,23 @@
+# Parameters for our pipeline
+
+
+# Input Images Path
+raw_images_folder: "data/01_raw/"
+
+
+# Models Path
+yolo_detect_parcel_model_path: "D:/Tensor/kedro/data-pipeline/models/detect_parcel/detect_parcel_7.pt"
+yolo_parcel_angle_classification_model_path: "D:/Tensor/kedro/data-pipeline/models/parcel_angle_classification/parcel_angle_classification_3.pt"
+yolo_blur_parcel_classification_model_path: "D:/Tensor/kedro/data-pipeline/models/blur_cls/blur_cls_1.pt"
+yolo_angle_correction_model_path: "D:/Tensor/kedro/data-pipeline/models/parcel_angle_classification/parcel_angle_classification_3.pt"
+yolo_receiver_detection_model_path: "D:/Tensor/kedro/data-pipeline/models/receiver_detection/receiver_detection_1_17.pt"
+yolo_blury_postcode_model_path: "D:/Tensor/kedro/data-pipeline/models/postcode_blur_cls/postcode_blur_cls_1.pt"
+yolo_digit_detection_model_path: "D:/Tensor/kedro/data-pipeline/models/digit_detection/digit_detection_6_s.pt"
+yolo_detect_word_digit_hbb_model_path: "D:/Tensor/kedro/data-pipeline/models/detect_word_digit_hbb/detect_word_digit_hbb_1.pt"
+real_ocr_model_path: "D:/Tensor/kedro/data-pipeline/models/real_ocr/real_ocr_1"
+
+
+# Batch Processing Configuration
+batch_size: 200  # Number of images to process per batch
+checkpoint_dir: "data/00_checkpoints/"  # Directory to store processing checkpoints
+enable_checkpointing: true  # Set to false to disable checkpoint feature

@@ -1,8 +1,8 @@
 import os
 import json
 import pandas as pd
-from .load_rules import load_rules, process_phrases_to_dict_to_handle_underlines
-from .graph_model import SequenceTree
+from ..load_rules import load_rules, process_phrases_to_dict_to_handle_underlines
+from ..graph_model import SequenceTree
 
 CONSTS_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -81,4 +81,8 @@ PREFIX_TO_REMOVE = (
     "اول",
 )
 
-graph_model = SequenceTree.load(os.path.join(CONSTS_DIR, "graph_rules_sari.json"), "json")
+graph_model = SequenceTree.load(os.path.join(CONSTS_DIR, "graph_rules.json"), "json")
+
+CITY_NAME_REPLACEMENTS = []
+
+SUFFIX_TO_REMOVE = ("کیرنده",)

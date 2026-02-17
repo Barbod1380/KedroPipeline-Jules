@@ -1,11 +1,10 @@
-from .CONSTS_kerman import CONSTS_kerman
+from .CONSTS_tehran import CONSTS_tehran
 from .detect_region_by_words_base import detect_region_by_words_base
 
-def detect_region_by_words_kerman(input_string: str, rules=None, replacements=None) -> int:
-    
+def detect_region_by_words_tehran(input_string: str, rules=None, replacements=None) -> int:
     return detect_region_by_words_base(
         input_string, 
-        CONSTS_kerman, 
+        CONSTS_tehran, 
         rules=rules, 
         replacements=replacements
-        )
+    )

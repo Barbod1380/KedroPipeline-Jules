@@ -2,6 +2,7 @@ from .graph_model import SequenceTree
 from .load_rules import replace_phrases
 from typing import List, Tuple, Any
 
+
 def preprocess_address(
     input_string: str,
     city_name_replacements: List[Tuple[str, str]],
@@ -11,6 +12,7 @@ def preprocess_address(
     keywords_to_cut_before: Any,
     keywords_to_cut_after: Any
 ) -> str:
+    
     # City specific replacements
     for old, new in city_name_replacements:
         input_string = input_string.replace(old, new)
@@ -135,7 +137,7 @@ def detect_region_by_words_base(
     abbreviation_dict = getattr(consts_module, 'ABBREVIATION_DICT', {})
     keywords_to_cut_before = getattr(consts_module, 'KEYWORDS_TO_CUT_BEFORE', [])
     keywords_to_cut_after = getattr(consts_module, 'KEYWORDS_TO_CUT_AFTER', [])
-    graph_model = getattr(consts_module, 'graph_model')
+    graph_model = getattr(consts_module, 'graph_model', None)
     special_places = getattr(consts_module, 'SPECIAL_PLACES', None)
 
 
@@ -164,7 +166,7 @@ def detect_region_by_words_base(
     if special_places:
         region = predict_by_specials(input_string, special_places)
 
-    if region == -1:
+    if region == -1 and graph_model != None:
         region = predict_by_graph(input_string, graph_model)
 
     if region == -1:

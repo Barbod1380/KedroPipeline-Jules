@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from paddleocr import TextRecognition
 from typing import Any, Set, List, Tuple
 from ..utils.crop_from_coordinates import crop_from_coordinates
-from .CONSTS.CONSTS import CORRECT_WORDS_SET, VALID_SPELL_CORRECTION_DICT
+from .CONSTS_tehran.CONSTS_tehran import CORRECT_WORDS_SET, VALID_SPELL_CORRECTION_DICT
 
 
 @dataclass

@@ -11,14 +11,14 @@ from typing import Any, Dict
 from ultralytics import YOLO
 from ..utils.checkpoint_manager import load_checkpoint, save_checkpoint, get_pending_images
 from ..utils.read_text import read_text
-from ..utils.read_postcode import read_postcode
+from ..utils.read_postcode_tehran import read_postcode_tehran
 from ..utils.read_postcode_gilan import read_postcode_gilan
 from ..utils.read_postcode_sari import read_postcode_sari
 from ..utils.read_postcode_kerman import read_postcode_kerman
 from ..utils.read_postcode_kermanshah import read_postcode_kermanshah
 from ..utils.load_paddle_model import load_paddle_model
 
-from ..utils.detect_region_by_words import detect_region_by_words
+from ..utils.detect_region_by_words_tehran import detect_region_by_words_tehran
 from ..utils.detect_region_by_words_gilan import detect_region_by_words_gilan
 from ..utils.detect_region_by_words_sari import detect_region_by_words_sari
 from ..utils.detect_region_by_words_kerman import detect_region_by_words_kerman
@@ -477,7 +477,7 @@ def read_classify_postcode(
             postcode_array = np.array(postcode_image)
             
             # Read postcode
-            postcodes_region, status, full_postcode = read_postcode(
+            postcodes_region, status, full_postcode = read_postcode_tehran(
                 postcode_array, digit_detection_model, save_path=None
             )
             
@@ -919,7 +919,7 @@ def read_address_ocr(
             )
             
             # Predict region from address (use corrected version)
-            texts_region = str(detect_region_by_words(address_string_corrected))
+            texts_region = str(detect_region_by_words_tehran(address_string_corrected))
             
             # Save results (both versions in one file)
             address_path = os.path.join(address_output_dir, f"{filename}_read_address.txt")

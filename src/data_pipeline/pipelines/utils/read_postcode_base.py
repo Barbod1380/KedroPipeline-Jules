@@ -150,7 +150,7 @@ def read_postcode_base(
 
     # Extract constants
     valid_regions = getattr(consts_module, 'VALID_REGIONS')
-    region_basket_map = getattr(consts_module, 'REGION_BASKET_MAP')
+    region_basket_map = getattr(consts_module, 'REGION_BASKET_MAP', {})
     postcode_correction = getattr(consts_module, 'POSTCODE_CORRECTION')
     garbage_postcodes = getattr(consts_module, 'GARBAGE_POSTCODES', ())
     special_postcodes = getattr(consts_module, 'SPECIAL_POSTCODES', {})
@@ -188,8 +188,6 @@ def read_postcode_base(
     # 6. Concatenate those three digits into a single integer
     digits_str = str(int("".join(str(int(d.item())) for d in sorted_columns)))
 
-    print(f"READ DIGITS: {digits_str}")
-
     if digits_str in garbage_postcodes:
         return -1, 'garbarge-postcode', None
 
@@ -207,11 +205,7 @@ def read_postcode_base(
         return -1, 'unique-value-constraint', digits_str
 
     first_sev = digits_str[:7]
-    print("===================")
-    print(first_sev)
     postcode = correct_postcode(first_sev, postcode_correction, region_basket_map)
-    print(postcode)
-    print("===================")
 
     # 2. Save models prediction
     if save_path:

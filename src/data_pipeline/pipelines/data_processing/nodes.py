@@ -5,6 +5,7 @@
 import os
 import cv2
 import numpy as np
+
 from PIL import Image
 from typing import Any, Dict
 from ultralytics import YOLO
@@ -13,10 +14,16 @@ from ..utils.read_text import read_text
 from ..utils.read_postcode import read_postcode
 from ..utils.read_postcode_gilan import read_postcode_gilan
 from ..utils.read_postcode_sari import read_postcode_sari
+from ..utils.read_postcode_kerman import read_postcode_kerman
+from ..utils.read_postcode_kermanshah import read_postcode_kermanshah
 from ..utils.load_paddle_model import load_paddle_model
+
 from ..utils.detect_region_by_words import detect_region_by_words
 from ..utils.detect_region_by_words_gilan import detect_region_by_words_gilan
 from ..utils.detect_region_by_words_sari import detect_region_by_words_sari
+from ..utils.detect_region_by_words_kerman import detect_region_by_words_kerman
+from ..utils.detect_region_by_words_kermanshah import detect_region_by_words_kermanshah
+
 from ..utils.detect_obb_coordinates import detect_obb_coordinates
 from ..utils.preprocesses import denoise_normalize, apply_adaptive_mean_threshold
 from ..utils.correct_angle import predict_angle_to_rotate, rotate_image, pad_to_square
@@ -667,6 +674,178 @@ def read_classify_postcode_sari(
     return results
 
 
+def read_classify_postcode_kerman(
+    postcode_boxes: Dict[str, Any],
+    parameters: Dict[str, Any]
+) -> Dict[str, str]:
+    """
+    Node that reads postcode digits and predicts region.
+    Processes images in batches for memory efficiency.
+    
+    Args:
+        postcode_boxes: Dict of preprocessed postcode boxes
+        parameters: Configuration parameters including:
+            - batch_size: Number of images to process per batch (default: 200)
+    
+    Returns:
+        Dict[str, str]: Dictionary mapping filename to predicted region (as string)
+    """
+    batch_size = parameters.get("batch_size", 200)
+    
+    results = {}
+    
+    # Load model once
+    digit_detection_model = YOLO(parameters["yolo_digit_detection_model_path"])
+    
+    # Get all filenames
+    all_filenames = list(postcode_boxes.keys())
+    
+    print(f"\n{'='*60}")
+    print(f"🔄 NODE 4: Read & Classify Postcode")
+    print(f"📦 Total images: {len(all_filenames)}")
+    print(f"📊 Batch size: {batch_size}")
+    print(f"{'='*60}\n")
+    
+    # Process images in batches
+    total_batches = (len(all_filenames) + batch_size - 1) // batch_size if all_filenames else 0
+    
+    for batch_num in range(total_batches):
+        start_idx = batch_num * batch_size
+        end_idx = min(start_idx + batch_size, len(all_filenames))
+        batch_filenames = all_filenames[start_idx:end_idx]
+        
+        print(f"📦 Node 4 - Batch {batch_num + 1}/{total_batches} (images {start_idx + 1}-{end_idx})")
+        
+        for filename in batch_filenames:
+            postcode_image = postcode_boxes[filename]
+            
+            # Skip if previous step had error or no postcode
+            if isinstance(postcode_image, int) and postcode_image < 0:
+                results[filename] = str(postcode_image)
+                continue
+            
+            if postcode_image is None:
+                results[filename] = "-1"  # No postcode detected
+                continue
+            
+            output_dir = os.path.join("data/03_postcode_regions", filename)
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Convert to numpy
+            postcode_array = np.array(postcode_image)
+            
+            # Read postcode
+            postcodes_region, status, full_postcode = read_postcode_kerman(
+                postcode_array, digit_detection_model, save_path=None
+            )
+            
+            # Save result
+            result_path = os.path.join(output_dir, f"{filename}_postcode_region.txt")
+            with open(result_path, 'w') as f:
+                f.write(str(postcodes_region))
+                f.write('\n')
+                f.write(str(full_postcode) if full_postcode is not None else "None")
+                f.write('\n')
+                f.write(status)
+            
+            results[filename] = str(postcodes_region)
+            print(f"  ✓ Postcode region for {filename}: {postcodes_region}")
+        
+        print(f"✅ Batch {batch_num + 1}/{total_batches} complete\n")
+    
+    print(f"{'='*60}")
+    print(f"✅ Node 4 Complete! Total: {len(results)} images")
+    print(f"{'='*60}\n")
+    
+    return results
+
+
+def read_classify_postcode_kermanshah(
+    postcode_boxes: Dict[str, Any],
+    parameters: Dict[str, Any]
+) -> Dict[str, str]:
+    """
+    Node that reads postcode digits and predicts region.
+    Processes images in batches for memory efficiency.
+    
+    Args:
+        postcode_boxes: Dict of preprocessed postcode boxes
+        parameters: Configuration parameters including:
+            - batch_size: Number of images to process per batch (default: 200)
+    
+    Returns:
+        Dict[str, str]: Dictionary mapping filename to predicted region (as string)
+    """
+    batch_size = parameters.get("batch_size", 200)
+    
+    results = {}
+    
+    # Load model once
+    digit_detection_model = YOLO(parameters["yolo_digit_detection_model_path"])
+    
+    # Get all filenames
+    all_filenames = list(postcode_boxes.keys())
+    
+    print(f"\n{'='*60}")
+    print(f"🔄 NODE 4: Read & Classify Postcode")
+    print(f"📦 Total images: {len(all_filenames)}")
+    print(f"📊 Batch size: {batch_size}")
+    print(f"{'='*60}\n")
+    
+    # Process images in batches
+    total_batches = (len(all_filenames) + batch_size - 1) // batch_size if all_filenames else 0
+    
+    for batch_num in range(total_batches):
+        start_idx = batch_num * batch_size
+        end_idx = min(start_idx + batch_size, len(all_filenames))
+        batch_filenames = all_filenames[start_idx:end_idx]
+        
+        print(f"📦 Node 4 - Batch {batch_num + 1}/{total_batches} (images {start_idx + 1}-{end_idx})")
+        
+        for filename in batch_filenames:
+            postcode_image = postcode_boxes[filename]
+            
+            # Skip if previous step had error or no postcode
+            if isinstance(postcode_image, int) and postcode_image < 0:
+                results[filename] = str(postcode_image)
+                continue
+            
+            if postcode_image is None:
+                results[filename] = "-1"  # No postcode detected
+                continue
+            
+            output_dir = os.path.join("data/03_postcode_regions", filename)
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Convert to numpy
+            postcode_array = np.array(postcode_image)
+            
+            # Read postcode
+            postcodes_region, status, full_postcode = read_postcode_kermanshah(
+                postcode_array, digit_detection_model, save_path=None
+            )
+            
+            # Save result
+            result_path = os.path.join(output_dir, f"{filename}_postcode_region.txt")
+            with open(result_path, 'w') as f:
+                f.write(str(postcodes_region))
+                f.write('\n')
+                f.write(str(full_postcode) if full_postcode is not None else "None")
+                f.write('\n')
+                f.write(status)
+            
+            results[filename] = str(postcodes_region)
+            print(f"  ✓ Postcode region for {filename}: {postcodes_region}")
+        
+        print(f"✅ Batch {batch_num + 1}/{total_batches} complete\n")
+    
+    print(f"{'='*60}")
+    print(f"✅ Node 4 Complete! Total: {len(results)} images")
+    print(f"{'='*60}\n")
+    
+    return results
+
+
 def read_address_ocr(
     receiver_boxes: Dict[str, Any],
     parameters: Dict[str, Any]
@@ -938,6 +1117,202 @@ def read_address_ocr_sari(
             
             # Predict region from address (use corrected version)
             texts_region = str(detect_region_by_words_sari(address_string_corrected))
+            
+            # Save results (both versions in one file)
+            address_path = os.path.join(address_output_dir, f"{filename}_read_address.txt")
+            with open(address_path, 'w', encoding='utf-8') as f:
+                f.write(f"{address_string_raw}\n")
+                f.write(f"{address_string_corrected}\n")
+            
+            region_path = os.path.join(region_output_dir, f"{filename}_address_region.txt")
+            with open(region_path, 'w') as f:
+                f.write(texts_region)
+            
+            address_texts[filename] = address_string_corrected
+            predicted_regions[filename] = texts_region
+            print(f"  ✓ Address region for {filename}: {texts_region}")
+        
+        print(f"✅ Batch {batch_num + 1}/{total_batches} complete\n")
+    
+    print(f"{'='*60}")
+    print(f"✅ Node 5 Complete! Total: {len(address_texts)} images")
+    print(f"{'='*60}\n")
+    
+    return address_texts, predicted_regions
+
+
+def read_address_ocr_kerman(
+    receiver_boxes: Dict[str, Any],
+    parameters: Dict[str, Any]
+) -> tuple[Dict[str, str], Dict[str, str]]:
+    """
+    Node that reads address using OCR and predicts region.
+    Processes images in batches for memory efficiency.
+    
+    Args:
+        receiver_boxes: Dict of preprocessed receiver boxes
+        parameters: Configuration parameters including:
+            - batch_size: Number of images to process per batch (default: 200)
+    
+    Returns:
+        tuple: (address_texts_dict, predicted_regions_dict)
+    """
+    batch_size = parameters.get("batch_size", 200)
+    
+    address_texts = {}
+    predicted_regions = {}
+    
+    # Load models once
+    print("\n🔄 Loading OCR models...")
+    word_digit_hbb = YOLO(parameters["yolo_detect_word_digit_hbb_model_path"])
+    real_ocr_model = load_paddle_model(parameters["real_ocr_model_path"])
+    print("✅ OCR models loaded\n")
+    
+    # Get all filenames
+    all_filenames = list(receiver_boxes.keys())
+    
+    print(f"{'='*60}")
+    print(f"🔄 NODE 5: Read Address OCR")
+    print(f"📦 Total images: {len(all_filenames)}")
+    print(f"📊 Batch size: {batch_size}")
+    print(f"{'='*60}\n")
+    
+    # Process images in batches
+    total_batches = (len(all_filenames) + batch_size - 1) // batch_size if all_filenames else 0
+    
+    for batch_num in range(total_batches):
+        start_idx = batch_num * batch_size
+        end_idx = min(start_idx + batch_size, len(all_filenames))
+        batch_filenames = all_filenames[start_idx:end_idx]
+        
+        print(f"📦 Node 5 - Batch {batch_num + 1}/{total_batches} (images {start_idx + 1}-{end_idx})")
+        
+        for filename in batch_filenames:
+            receiver_image = receiver_boxes[filename]
+            
+            # Skip if previous step had error
+            if isinstance(receiver_image, int) and receiver_image < 0:
+                address_texts[filename] = f"Error: {receiver_image}"
+                predicted_regions[filename] = str(receiver_image)
+                continue
+            
+            # Create output directories
+            address_output_dir = os.path.join("data/03_read_address", filename)
+            region_output_dir = os.path.join("data/03_address_region", filename)
+            os.makedirs(address_output_dir, exist_ok=True)
+            os.makedirs(region_output_dir, exist_ok=True)
+            
+            # Convert to numpy
+            receiver_array = np.array(receiver_image)
+            
+            # Read address (returns both corrected and raw versions)
+            address_string_corrected, address_string_raw = read_text(
+                receiver_array,
+                word_digit_hbb,
+                real_ocr_model,
+                save_path=None,
+            )
+            
+            # Predict region from address (use corrected version)
+            texts_region = str(detect_region_by_words_kerman(address_string_corrected))
+            
+            # Save results (both versions in one file)
+            address_path = os.path.join(address_output_dir, f"{filename}_read_address.txt")
+            with open(address_path, 'w', encoding='utf-8') as f:
+                f.write(f"{address_string_raw}\n")
+                f.write(f"{address_string_corrected}\n")
+            
+            region_path = os.path.join(region_output_dir, f"{filename}_address_region.txt")
+            with open(region_path, 'w') as f:
+                f.write(texts_region)
+            
+            address_texts[filename] = address_string_corrected
+            predicted_regions[filename] = texts_region
+            print(f"  ✓ Address region for {filename}: {texts_region}")
+        
+        print(f"✅ Batch {batch_num + 1}/{total_batches} complete\n")
+    
+    print(f"{'='*60}")
+    print(f"✅ Node 5 Complete! Total: {len(address_texts)} images")
+    print(f"{'='*60}\n")
+    
+    return address_texts, predicted_regions
+
+
+def read_address_ocr_kermanshah(
+    receiver_boxes: Dict[str, Any],
+    parameters: Dict[str, Any]
+) -> tuple[Dict[str, str], Dict[str, str]]:
+    """
+    Node that reads address using OCR and predicts region.
+    Processes images in batches for memory efficiency.
+    
+    Args:
+        receiver_boxes: Dict of preprocessed receiver boxes
+        parameters: Configuration parameters including:
+            - batch_size: Number of images to process per batch (default: 200)
+    
+    Returns:
+        tuple: (address_texts_dict, predicted_regions_dict)
+    """
+    batch_size = parameters.get("batch_size", 200)
+    
+    address_texts = {}
+    predicted_regions = {}
+    
+    # Load models once
+    print("\n🔄 Loading OCR models...")
+    word_digit_hbb = YOLO(parameters["yolo_detect_word_digit_hbb_model_path"])
+    real_ocr_model = load_paddle_model(parameters["real_ocr_model_path"])
+    print("✅ OCR models loaded\n")
+    
+    # Get all filenames
+    all_filenames = list(receiver_boxes.keys())
+    
+    print(f"{'='*60}")
+    print(f"🔄 NODE 5: Read Address OCR")
+    print(f"📦 Total images: {len(all_filenames)}")
+    print(f"📊 Batch size: {batch_size}")
+    print(f"{'='*60}\n")
+    
+    # Process images in batches
+    total_batches = (len(all_filenames) + batch_size - 1) // batch_size if all_filenames else 0
+    
+    for batch_num in range(total_batches):
+        start_idx = batch_num * batch_size
+        end_idx = min(start_idx + batch_size, len(all_filenames))
+        batch_filenames = all_filenames[start_idx:end_idx]
+        
+        print(f"📦 Node 5 - Batch {batch_num + 1}/{total_batches} (images {start_idx + 1}-{end_idx})")
+        
+        for filename in batch_filenames:
+            receiver_image = receiver_boxes[filename]
+            
+            # Skip if previous step had error
+            if isinstance(receiver_image, int) and receiver_image < 0:
+                address_texts[filename] = f"Error: {receiver_image}"
+                predicted_regions[filename] = str(receiver_image)
+                continue
+            
+            # Create output directories
+            address_output_dir = os.path.join("data/03_read_address", filename)
+            region_output_dir = os.path.join("data/03_address_region", filename)
+            os.makedirs(address_output_dir, exist_ok=True)
+            os.makedirs(region_output_dir, exist_ok=True)
+            
+            # Convert to numpy
+            receiver_array = np.array(receiver_image)
+            
+            # Read address (returns both corrected and raw versions)
+            address_string_corrected, address_string_raw = read_text(
+                receiver_array,
+                word_digit_hbb,
+                real_ocr_model,
+                save_path=None,
+            )
+            
+            # Predict region from address (use corrected version)
+            texts_region = str(detect_region_by_words_kermanshah(address_string_corrected))
             
             # Save results (both versions in one file)
             address_path = os.path.join(address_output_dir, f"{filename}_read_address.txt")

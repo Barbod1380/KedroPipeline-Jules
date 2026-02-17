@@ -39,7 +39,7 @@ def main() -> None:
     Main entry point for the script.
     Prompts for a root folder and cleans it.
     """
-    root_directory = r"D:\Tensor\kedro\data-pipeline\data"
+    root_directory = r"data"
 
     if os.path.exists(root_directory):
         clean_folder(root_directory)

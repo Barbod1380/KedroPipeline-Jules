@@ -4,6 +4,8 @@ from data_pipeline.pipelines.data_processing.pipeline import (
     create_partial_pipeline_from_cropped,
     create_partial_pipeline_from_cropped_gilan,
     create_partial_pipeline_from_cropped_sari,
+    create_partial_pipeline_from_cropped_kerman,
+    create_partial_pipeline_from_cropped_kermanshah
 )
 
 
@@ -15,5 +17,7 @@ def register_pipelines() -> dict[str, Pipeline]:
         "__default__": create_pipeline(),
         "from_cropped": create_partial_pipeline_from_cropped(),
         "from_cropped_gilan": create_partial_pipeline_from_cropped_gilan(),
-        "from_cropped_sari": create_partial_pipeline_from_cropped_sari()
+        "from_cropped_sari": create_partial_pipeline_from_cropped_sari(),
+        "from_cropped_kerman": create_partial_pipeline_from_cropped_kerman(),
+        "from_cropped_kermanshah": create_partial_pipeline_from_cropped_kermanshah()
     }

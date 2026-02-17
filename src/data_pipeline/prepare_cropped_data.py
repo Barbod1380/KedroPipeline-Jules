@@ -33,6 +33,6 @@ def prepare_cropped_images(input_folder: str, output_file: str):
 if __name__ == "__main__":
     # Modify these paths as needed
     prepare_cropped_images(
-        input_folder=r"D:\Tensor\kedro\data-pipeline\data\01_raw", 
-        output_file=r"D:\Tensor\kedro\data-pipeline\data\02_intermediate\cropped_parcel_images.pkl"
+        input_folder=r"data\01_raw", 
+        output_file=r"data\02_intermediate\cropped_parcel_images.pkl"
     )

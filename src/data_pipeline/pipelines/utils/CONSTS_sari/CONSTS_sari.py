@@ -82,3 +82,12 @@ PREFIX_TO_REMOVE = (
 )
 
 graph_model = SequenceTree.load(os.path.join(CONSTS_DIR, "graph_rules.json"), "json")
+
+CITY_NAME_REPLACEMENTS = [
+    (" عدد خیابان تهران ", " عدد_خیابان_تهران "),
+    (" تهران نو ", " تهران_نو "),
+    (" خیابان ساری ", " خیابان_ساری "),
+    (" بخش مرکزی ", " بخش_مرکزی "),
+]
+
+SUFFIX_TO_REMOVE = ("کیرنده",)
